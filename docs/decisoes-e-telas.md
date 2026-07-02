@@ -31,20 +31,6 @@
 - O laranja comercial principal foi definido como `#c75000`.
 - Botoes de acao usam laranja escuro, com hover mais escuro.
 - Os cards de prioridade usam cores para passar urgencia da mensagem que a informação quer passar.
-- Badges foram padronizadas com largura fixa e texto centralizado.
-- Cards de produto foram reorganizados em linha: nome e badge, estoque atual/minimo, acao "Adicionar estoque" no canto direito.
-
-### Decisoes de regra de negocio
-
-- Produto com codigo duplicado nao pode ser salvo.
-- Produto com nome exatamente igual nao pode ser salvo.
-- Produto com nome parecido gera aviso confirmavel.
-- Estoque total do produto e calculado pela soma das entradas ativas.
-- Saida de estoque consome primeiro a entrada com validade mais antiga.
-- Perda reduz a quantidade da entrada selecionada.
-- Quando a quantidade chega a zero, a entrada fica esgotada.
-- Alertas de estoque usam o saldo total do produto.
-- Alertas de validade usam as datas de validade cadastradas.
 
 ## Telas atuais
 
@@ -168,16 +154,3 @@ Funcionalidades basicas:
 - Lista perdas.
 - Lista edicoes relevantes.
 - Mostra tipo, produto, quantidade, descricao e data.
-
-## Rotas mantidas apenas por compatibilidade
-
-- `/lotes/*` redireciona para `/produtos`.
-- `/relatorios/perdas` redireciona para `/dashboard`.
-
-## Observacoes tecnicas
-
-- Backend centraliza as regras de estoque e validade.
-- Frontend nao calcula consumo FEFO diretamente.
-- Banco local fica em `backend/data.db`.
-- Dados iniciais sao criados automaticamente quando o banco esta vazio.
-- Componentes shadcn ficam em `frontend/src/components/ui`.

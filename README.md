@@ -1,6 +1,6 @@
 # Controle Inteligente de Estoque para Pequenos Mercados
 
-MVP local para controlar produtos, lotes, validade, estoque baixo, saidas e perdas.
+MVP local para controlar produtos, entradas de estoque, validade, estoque baixo, saidas e perdas.
 
 ## Stack
 
@@ -36,23 +36,23 @@ npm start
 ## Fluxo principal
 
 1. Acesse `/dashboard`.
-2. Veja alertas de estoque critico e validade.
+2. Veja alertas de estoque baixo e validade.
 3. Acesse `/produtos`.
-4. Cadastre um produto base ou use `+ lote` em um card existente.
+4. Cadastre um produto base ou use `Adicionar estoque` em um card existente.
 5. Registre saida em `/saida`.
 6. Registre perdas em `/perdas`.
-7. Consulte `/relatorios/perdas` e `/historico`.
+7. Consulte as movimentacoes em `/historico`.
 
 ## Regras implementadas
 
 - Produto base nao deve ser duplicado.
 - Codigo duplicado e nome igual bloqueiam cadastro.
 - Nome parecido gera aviso confirmavel.
-- Lote sempre pertence a um produto existente.
-- Cadastro relampago de lote pede apenas quantidade e validade.
-- Data de aquisicao do lote relampago e registrada automaticamente.
-- Estoque total soma lotes ativos.
-- Saida consome primeiro os lotes com validade mais proxima.
-- Perda reduz a quantidade atual do lote.
-- Alertas de vencimento consideram lotes.
-- Alertas de estoque consideram a soma dos lotes ativos.
+- Nova entrada de estoque sempre pertence a um produto existente.
+- Cadastro relampago de estoque pede apenas quantidade e validade.
+- Data de aquisicao da entrada de estoque e registrada automaticamente.
+- Estoque total soma entradas ativas.
+- Saida consome primeiro os produtos com validade mais proxima.
+- Perda reduz a quantidade disponivel da validade selecionada.
+- Alertas de vencimento consideram as validades cadastradas.
+- Alertas de estoque consideram a soma das entradas ativas.
